@@ -17,6 +17,7 @@ import { CreateCatDto, createCatSchema } from './dto/create-cat.dto';
 import { Cat } from './interfaces/cat.interface';
 import { JoiValidationPipe } from './dto/joi-validation.pipe';
 import { LoggingInterceptor } from 'src/util/logging.interceptor';
+import { User } from 'src/user.decorator';
 
 // @UseFilters(HttpExceptionFilter)
 @UseGuards(RolesGuard)
@@ -43,6 +44,10 @@ export class CatsController {
   // findAll(@Query() query: ListAllEntities): string {
   //   return `This action returns all cats (limit: ${query.limit} items)`;
   // }
+  @Get('user')
+  async findUser(@User('firstName') firstName: string) {
+    console.log(`Hello ${firstName}`);
+  }
 
   // example localhost:3000/3 and body parameter
   @Get(':id')
