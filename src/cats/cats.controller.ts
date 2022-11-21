@@ -10,14 +10,14 @@ import {
   UseInterceptors,
   UsePipes,
 } from '@nestjs/common';
-import { RolesGuard } from 'src/util/roles.guard';
-import { Roles } from 'src/util/roles.decorator';
+import { RolesGuard } from '../util/roles.guard';
+import { Roles } from '../util/roles.decorator';
 import { CatsService } from './cats.service';
 import { CreateCatDto, createCatSchema } from './dto/create-cat.dto';
 import { Cat } from './interfaces/cat.interface';
 import { JoiValidationPipe } from './dto/joi-validation.pipe';
-import { LoggingInterceptor } from 'src/util/logging.interceptor';
-import { User } from 'src/user.decorator';
+import { LoggingInterceptor } from '../util/logging.interceptor';
+import { User } from '../user.decorator';
 
 // @UseFilters(HttpExceptionFilter)
 @UseGuards(RolesGuard)
