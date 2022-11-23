@@ -1,9 +1,13 @@
-import { Inject, Injectable, Optional } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
+import { MyLogger } from 'src/logger/logger.service';
 import { Cat } from './interfaces/cat.interface';
 
 @Injectable()
 export class CatsService {
   private readonly cats: Cat[] = [];
+  constructor(private myLogger: MyLogger) {
+    this.myLogger.setContext('CatsService')
+  }
 
   create(cat: Cat) {
     this.cats.push(cat);
@@ -12,6 +16,7 @@ export class CatsService {
     return this.cats.at(id);
   }
   findAll(): Cat[] {
+    this.myLogger.warn('Warn!! about to return cats')
     return this.cats;
   }
 }
