@@ -4,11 +4,13 @@ import { AdminModule } from './admin/admin.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
+import { FileUploadModule } from './fileupload/fileupload.module';
 import { LoggerMiddleware } from './util/logger.middleware';
 
 @Module({
   imports: [
     CatsModule,
+    FileUploadModule,
     AdminModule,
     ConfigModule.register({ folder: './config' }),
   ],
